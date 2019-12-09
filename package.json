@@ -1,0 +1,22 @@
+{
+  "name": "api_busca_filme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js"
+  },
+  "author": "Monica Mosman",
+  "license": "ISC",
+  "dependencies": {
+    "apidoc": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.14",
+    "nodemon": "^2.0.1"
+  }
+}
