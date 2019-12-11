@@ -14,7 +14,7 @@ const app = express()
 //     console.log("Conectada!")
 //   });
   
-  const index = require("./routes/index")
+  //const index = require("./routes/index")
   //const filmes ??
   
   app.use(express.json());
@@ -32,8 +32,8 @@ const app = express()
   
   app.use(bodyParser.json());
   
-  app.use("/", index)
-  app.use("/clientes", clientes)
-  app.use("/sessions", sessions)
+  // app.use("/", index)
+  // app.use("/clientes", clientes)
+  // app.use("/sessions", sessions)
   
   module.exports = app
