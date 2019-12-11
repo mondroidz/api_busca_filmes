@@ -5,13 +5,7 @@ const authMiddleware = require('../middleware/auth')
 
 router.get("/", controller.get)
 router.post("/", controller.postUsuario)
-router.get('/ping', (req, res) => {
-    res.send('pong');
-  })
-
+router.get('/ping', (req, res) => {res.send('pong');})
 router.use('authMiddleware')
-app.get('/ping', (req, res) => {
-    res.send('pong');
-  })
 
 module.exports = router

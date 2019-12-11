@@ -3,7 +3,16 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const app = express()
 
-// mongoose.connect("mongodb://localhost:27017/clientes", {useNewUrlParser: true}); // CONEXAO LOCAL 
+//CONEXAO LOCAL
+mongoose.connect("mongodb://localhost:3002", {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=> {
+  console.log('MongoDB Conectado...')
+})
+.catch((err) => {
+  console.log({ erro: 'erro ao se conectar no mongoDB.'})
+})
+
+
 
 // mongoose.connect(process.env.DATABASE, {
 //     useNewUrlParser: true, useUnifiedTopology: true
@@ -14,8 +23,6 @@ const app = express()
 //     console.log("Conectada!")
 //   });
   
-  //const index = require("./routes/index")
-  //const filmes ??
   
   app.use(express.json());
   
