@@ -14,7 +14,7 @@ db.once("open", function() {
   console.log("Conexão com o MongoDB estabelecida com sucesso!");
 });
 
-
+app.get('/ping', (req, res) => {res.send('pong');})
 
 // mongoose.connect(process.env.DATABASE, {
 //     useNewUrlParser: true, useUnifiedTopology: true
