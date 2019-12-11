@@ -1,7 +1,7 @@
-const Usuario = require('../model/cadastro')
-const fs = require('fs')
+const Usuario = require('../model/usuario')
 const bcrypt = require("bcryptjs");
 const bcryptSalt = 8;
+
 
 //POST
 exports.postUsuario = (req, res) => {
@@ -16,7 +16,7 @@ exports.postUsuario = (req, res) => {
 
 usuario.save()
     .then(() => {
-        return res.status(201).send(clientes);
+        return res.status(201).send(usuario);
     })
     .catch ((e) =>{
         return res.status(401).json({ erro: " erro "})
@@ -24,3 +24,13 @@ usuario.save()
 }
 
 //GET
+exports.getUsuario = (req, res) => {
+const novoUsuario = new usuariosModel(usuario);
+    return novoUsuario.save();
+    
+
+    Usuarios.find(function (err, usuario) {
+        if (err) res.status(500).send(err);
+        res.status(200).send(clientes);
+    });
+};

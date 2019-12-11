@@ -14,6 +14,6 @@ app.listen(PORT, (err) => {
     console.log('iniciou em http://localhost:3002')
 })
 
-app.get('/ping', (req, res) => {
-  res.send('pong');
-}) 
+// app.get('/ping', (req, res) => {
+//   res.send('pong');
+// }) 

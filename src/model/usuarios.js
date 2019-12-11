@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const cadastroSchema = new mongoose.Schema ({
+const usuarioSchema = new mongoose.Schema ({
     nome: { type: String },
     email: { type: String, required: true },
     password: { type: String },
