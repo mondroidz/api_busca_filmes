@@ -1,19 +1,10 @@
+const app = require('./src/app')
+const PORT = 4000
 
-const express = require('express');
-const app = require("./src/app");
-const PORT = process.env.PORT || 3002
-
-// app.use ('/', (req, res) => {
-//     res.send("testando");
-// })
-
-app.listen(PORT, (err) => {
-  if (err) {
-    return console.log('Servidor não encontrado.');
-  } 
-    console.log('iniciou em http://localhost:3002')
+//PORTA
+app.listen(PORT || process.env.PORT, (e) => {
+    if(e) {
+        console.log(' Deu erro na porta')
+    } console.log(' Está rodando na porta: ' +PORT)
 })
 
-// app.get('/ping', (req, res) => {
-//   res.send('pong');
-// }) 

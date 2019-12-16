@@ -1,0 +1,15 @@
+{
+  "name": "Projeto Livre Mercado Livre",
+  "version": "0.1.0",
+  "description": "API para Busca de Filmes",
+  "apidoc": {
+  "title": "Gerenciamento de Filmes",
+  "url" : "https://github.com/mondroidz/Projeto_Livre_mercadolivre",
+  "header": {
+  "title": "Projeto Livre Mercado Livre"
+},
+  "footer": {
+  "title": "Projeto Livre Mercado Livre"  
+}
+}
+}

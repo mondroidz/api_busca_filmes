@@ -3,9 +3,11 @@ const mongoose = require('mongoose')
 const filmesSchema = new mongoose.Schema ({
     titulo: { type: String },
     produtor: { type: String },
-    ano: { type: Date },
+    ano: { type: Number },
     //tipo: { type: String }, ->arrays de tipos de filmes: terror, comédia, etc
-    assistido: { type: Boolean },
+    // assistido: { type: Boolean }
 })
 
-module.exports = clientesBD;
+const user = mongoose.model('filmes', filmesSchema)
+
+module.exports = user

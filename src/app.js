@@ -1,32 +1,25 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
+const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
-//CONEXAO LOCAL / MONGOOOSE
-mongoose.connect("mongodb://localhost:27017/buscaFilmes", {
-  useNewUrlParser: true, useUnifiedTopology: true
-});
+//CONEXAO MONGO
+mongoose.connect("mongodb://localhost:27017/searchFilmes", {useNewUrlParser : true, useUnifiedTopology: true, useCreateIndex: true})
+.then(() => {
+    console.log("Esse banco está conectado.")
+})
+.catch((e) => {
+    console.log('Algo não deu certo, erro: '+ e)
+})
 
-let db = mongoose.connection;
-db.on("error", console.log.bind(console, "connection error:"));
-db.once("open", function() {
-  console.log("Conexão com o MongoDB estabelecida com sucesso!");
-});
+//ROTAS
+const usuarios = require('../src/route/usuariosRoute')
+const filmes = require('../src/route/filmesRoute')
 
-app.get('/ping', (req, res) => {res.send('pong');})
+//COMPLEMENTO DA ROTA
+app.use(bodyParser.json())
 
-// mongoose.connect(process.env.DATABASE, {
-//     useNewUrlParser: true, useUnifiedTopology: true
-//   });
-//   const db = mongoose.connection
-//   db.on("error", console.log.bind(console, "connection error:"))
-//   db.once("open", function () {
-//     console.log("Conectada!")
-//   });
-  
-   
-  app.use(function (req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
     res.header(
       "Access-Control-Allow-Headers",
@@ -34,13 +27,14 @@ app.get('/ping', (req, res) => {res.send('pong');})
     )
     next()
   })
-  
-  app.use(express.static("public"));
-  app.use(express.json());
-  app.use(bodyParser.json());
-  
-  //app.use("/", index)
-  // app.use("/clientes", clientes)
-  // app.use("/sessions", sessions)
-  
-  module.exports = app
+
+app.use('/', usuarios)
+app.use("/filmes", filmes)
+
+//APIDOC
+app.use(express.static('doc'))
+app.get('/api-doc', (req, res) =>{
+    res.sendFile(__dirname + '/doc/index.html');
+})
+
+module.exports = app
